@@ -9,7 +9,6 @@ $(document).ready(function() {
       columns: [
           { data : "date", type: "date" },
           { data : "participant" },
-          { data : "question"},
           { data : "answer"},
       ],
       buttons: [
