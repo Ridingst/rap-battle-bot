@@ -4,12 +4,12 @@ Mailer service uses nodemailer's transport methods. Therefore, for better unders
 ## Environment Variables ##
 ### Local ###
 Create a file named production under /config/production.json
-For Gmail (@postshift.com) settings:
+For email settings:
 ```
 {
     "token": "slack bot token here",
     "mail-service": "Gmail",
-    "mail-email": "Tom@postshift.com",
+    "mail-email": "mail@thomasridings..com",
     "mail-pass": "Password here"
 }
 ```
