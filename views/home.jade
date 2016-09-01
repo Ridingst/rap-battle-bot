@@ -1,0 +1,68 @@
+extends layout
+
+block content
+  br
+  .container
+    .jumbotron
+      h1 Post*Shift Standups Slack Bot
+      p.lead Configuration page for the Post*Shift standup bot.
+      p
+        strong start meeting
+        |  starts a new meeting.
+      p
+        strong skip
+        |  jump the person and come back to them at the end.
+      p
+        strong dismiss
+        |  will skip this person for the whole standup.
+      p
+        strong quit
+        |  will end the meeting completely.
+      p
+        strong @mention "status"
+        |  will list the current active meetings
+      hr
+    .row
+      .col-md-6.col-sm-12
+        h2 Questions
+        p.lead Which questions should I ask each week.
+        ul
+        for question in data.questions
+          li #{question.question}
+            |  
+            a(href='question/delete/' + question._id)
+              span.glyphicon.glyphicon-remove
+        br
+        form#newQuestion(action='/question', method='post')
+          .form-group
+            label.control-label(for='QUESTION') Add New Question
+            .col.input-group
+              input#QUESTION.form-control.input-md(name='QUESTION', type='text', placeholder='enter question...', required=true)
+              span.input-group-btn  
+                button.btn.btn-primary Add New
+      .col-md-6.col-sm-12
+        h2 Emails
+        p.lead Who should I email with the result each week?
+        ul
+        for email in data.emails
+          li #{email.email}
+            |  
+            a(href='email/delete/' + email._id)
+              span.glyphicon.glyphicon-remove
+        br
+        form#newEmail(action='/email', method='post')
+          .form-group
+            label.control-label(for='EMAIL') Add New Email
+            .col.input-group
+              input#EMAIL.form-control.input-md(name='EMAIL', type='text', placeholder='enter email...', required=true)
+              span.input-group-btn  
+                button.btn.btn-primary Add New
+    hr
+    .row
+      table#results.display
+        thead
+          tr
+            th Date
+            th Who
+            th Question
+            th Answer
